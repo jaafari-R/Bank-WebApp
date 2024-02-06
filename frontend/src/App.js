@@ -1,7 +1,7 @@
 import './App.css';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Transactions from './apiManagers/transactions/Transactions';
+import Transactions from './components/transactions/Transactions';
 
 function App() {
     return (
