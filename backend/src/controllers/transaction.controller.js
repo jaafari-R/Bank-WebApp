@@ -14,6 +14,16 @@ export default class TransactionController {
         }
     }
 
+    static async getSpendingsPerCategory(req, res) {
+        try {
+            const allTransactions = await TransactionModel.getSpendigsPerCategory();
+            res.json(allTransactions);
+        }
+        catch(error) {
+            errorHandler.handleError(res, error);
+        }
+    }
+
     static async createTransaction(req, res) {
         try {
             TransactionValidator.validateCreate(req.body);

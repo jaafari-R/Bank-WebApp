@@ -6,5 +6,6 @@ const router = Router();
 router.get("/", TransactionController.getAllTransactions);
 router.post("/", TransactionController.createTransaction);
 router.delete("/", TransactionController.deleteTransaction);
+router.get("/spendingsPerCategory", TransactionController.getSpendingsPerCategory);
 
 export default router;
