@@ -1,6 +1,4 @@
 import { Schema, model } from "mongoose";
-import MongoDBManager from "../dbManager.js";
-import Config from "../../config.js";
 
 const transactionSchema = Schema({
     amount: {type: Number, required: true},
