@@ -1,6 +1,6 @@
 export default class CategorySpending {
-    constructor({category, total}) {
-        this.category = category;
+    constructor({_id, total}) {
+        this.category = _id;
         this.total = total;
     }
 }
