@@ -6,7 +6,10 @@ import Transaction from "./transactions";
 
 class TransactionApiManager {
     constructor() {
-        this.axios = axios.create(Config.TRANSACTION_API_URL);
+        console.log(Config.TRANSACTION_API_URL)
+        this.axios = axios.create({
+            baseURL: Config.TRANSACTION_API_URL
+        });
     }
 
     async getAllTransactions() {
