@@ -9,4 +9,11 @@ export default class TransactionModel {
         }
         return allTransactions;
     }
+
+    static async createTransaction({amount, category, vendor}) {
+        const newTransaction = await Transaction.create({
+            amount, category, vendor
+        });
+        return newTransaction;
+    }
 }
