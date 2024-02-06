@@ -23,9 +23,8 @@ class TransactionApiManager {
         }
     }
 
-    async createTransaction(amount, category, vendor) {
+    async createTransaction(transaction) {
         try {
-            const transaction = {amount, category, vendor};
             const response = await this.axios.post("/", transaction);
             const newTransaction = new Transaction(response.data);
             return newTransaction;
