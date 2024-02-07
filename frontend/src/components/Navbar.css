@@ -1,0 +1,26 @@
+.navbar {
+    padding-block: 20px;
+    display: flex;
+    justify-content: center;
+    border-bottom: #aaa solid 1px;
+    box-shadow: 0 1px 10px #aaa;
+}
+
+.navbar > .links {
+    display: flex;
+    gap: 50px;
+}
+
+.navbar > .links > li {
+    list-style: none;
+}
+
+.navbar > .links > li > a {
+    font-size:xx-large;
+    font-weight: bold;
+    color: #111;
+}
+
+.navbar > .links > li > a:hover {
+    color: rgb(17, 0, 252);
+}
