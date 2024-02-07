@@ -1,0 +1,38 @@
+.formInput {
+    margin-block: 25px;
+    margin-inline: auto;
+    position: relative;
+    width: fit-content;
+}
+
+.formInput > label {
+    text-align: end;
+    flex: 0.2;
+    font-size: 25px;
+    justify-self: end;
+}
+
+.formInput > input {
+    /* display: block; */
+    border: none;
+    border-bottom: 2px solid rgba(0,0,0, 0.3);
+    font-size: 20px;
+    width: 280px;
+    outline: none;
+}
+
+.formInput > input:focus ~ label,
+.formInput > input:valid ~ label {
+  transform: translateY(-20px);
+  font-size: 17px;
+  color: #3498db;
+}
+
+.formInput > label {
+    position: absolute;
+    pointer-events: none;
+    bottom: 10px;
+    left: 0;
+    font-size: 20px;
+    transition: all 0.3s ease;
+  }

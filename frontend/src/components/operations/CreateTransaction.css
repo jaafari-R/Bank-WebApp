@@ -1,0 +1,21 @@
+.btns {
+    width: 280px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.createTransaction > .btns > button {
+    padding: 5%;
+    font-size: 15px;
+    font-weight: 600;
+    color: #eee;
+}
+
+.createTransaction > .btns > .withdrawBtn {
+    background-color: rgb(255, 45, 45);
+}
+
+.createTransaction > .btns > .depositBtn {
+    background-color: #04AA6DDD;
+}
