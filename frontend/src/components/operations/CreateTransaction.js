@@ -32,7 +32,7 @@ export default function CreateTransaction() {
 
     return (
         <div className='operation createTransaction'>
-            <h2 className='title'>Create Transaction</h2>
+            <h2 className='title'>Perform a Transaction</h2>
 
             <FormInput dataType="number" handleChange={handleChange(setAmount)} fieldName="amount" value={amount}/>
             <FormInput dataType="text" handleChange={handleChange(setCategory)} fieldName="category" value={category}/>
