@@ -1,15 +1,32 @@
-.transaction {
-    padding: 20px;
-}
 
-.transaction:nth-child(odd) {
-    background-color: #f4f4f4;
-}
-
-.transaction:nth-child(even) {
-    background-color: #fafafa;
-}
-
-.transaction > .delete {
+.transaction.tableItem > .icons > .delete > .deleteIcon {
     color: red;
+}
+
+.transaction.tableItem > .icons > .delete {
+    cursor: pointer;
+    display: flex;
+}
+
+.transaction.tableItem > .icons > .delete:hover .tooltip {
+    visibility: visible;
+}
+
+.transaction.tableItem > .icons > .delete > .tooltip {
+    visibility: hidden;
+    font-weight: bold;
+    color: #333;
+}
+
+.transaction.tableItem > .fields > .vendor {
+    flex: 0.2;
+}
+
+.transaction.tableItem > .fields > .category {
+    flex: 0.3;
+}
+
+.transaction.tableItem > .fields > .amount {
+    flex: 0.5;
+    padding-block: 5px;
 }

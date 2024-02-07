@@ -1,0 +1,8 @@
+.categorySpending.tableItem > .fields > .category {
+    flex: 0.5;
+}
+
+.categorySpending.tableItem > .fields > .total {
+    flex: 0.5;
+    padding-block: 5px;
+}

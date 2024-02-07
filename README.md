@@ -3,4 +3,4 @@
 | /                                             | GET       |                                                   | [ Transaction ] |
 | /                                             | POST      | { amount, category, vendor }                      | Transaction |
 | /                                             | DELETE    | { id }                                            |           |
-| /spendingPerCategory                          | GET       |                                                   | [ { category, total } ] |
+| /spendingPerCategory                          | GET       |                                                   | [ { _id, total } ] |

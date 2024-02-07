@@ -1,0 +1,17 @@
+.table {
+    margin-top: 20px;
+    margin-inline: 30vw;  
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;  
+    border-radius: 10px;
+    text-align: center;
+}
+
+.table > h1 {
+    margin-bottom: 20px;
+}
+
+.table > .table-header {
+    border-bottom: 2px #999 solid;
+}

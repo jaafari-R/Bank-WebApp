@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Transactions from './components/transactions/Transactions';
-import CategorySpendings from './components/spendingsPerCategory/CategorySpendings';
+import CategorySpendings from './components/categorySpendings/CategorySpendings';
 import CreateTransaction from './components/createTransaction/CreateTransaction';
 import Navbar from './components/Navbar';
 

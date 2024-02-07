@@ -5,7 +5,7 @@ export default class TransactionValidator {
         if(amount === undefined || !category || !vendor) {
             throw new MISSING_DATA_ERROR();
         }
-        if(amount <= 0) {
+        if(amount === 0) {
             throw new INVALID_AMOUNT_ERROR();
         }
     }

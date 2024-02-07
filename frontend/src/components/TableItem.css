@@ -1,0 +1,34 @@
+
+.tableItem {
+    position: relative;
+    padding: 20px;
+    padding-right: 150px;
+    text-align: center;
+}
+
+.tableItem:nth-child(odd) {
+    background-color: #e0e0e0;
+}
+
+.tableItem:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+.tableItem > .fields {
+    display: flex;
+    align-items: center;
+    
+}
+
+.tableItem > .fields > .deposit {
+    background-color: rgba(0, 177, 0, 0.5);
+}
+
+.tableItem > .fields > .withdraw {
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+.tableItem > .icons {
+    position: absolute;
+    right: 20px;
+}

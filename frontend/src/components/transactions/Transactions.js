@@ -1,4 +1,6 @@
-import "./Transactions.css"
+import "../Table.css"
+import "./Transaction.css";
+
 
 import React, { useEffect, useState } from 'react'
 import transactionApiManager from '../../apiManagers/transactions.apiManager';
@@ -26,8 +28,15 @@ export default function Transactions() {
     }
 
     return (
-        <div className='transactions'>
+        <div className='table'>
             <h1>Transactions</h1>
+            <div className='transaction tableItem table-header'>
+                <div className="fields">
+                    <h2 className="vendor">Vendor</h2>
+                    <h2 className="category">Category</h2>
+                    <h2 className="amount">Amount</h2>
+                </div>
+            </div>
             {transactions.map(transaction =>
                 <Transaction key={transaction.id} transaction={transaction} deleteTransaction={() => deleteTransaction(transaction.id)}/>
             )}
