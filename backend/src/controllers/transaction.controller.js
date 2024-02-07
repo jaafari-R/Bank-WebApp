@@ -43,7 +43,6 @@ export default class TransactionController {
             res.sendStatus(204);
         }
         catch(error) {
-            console.log("HI")
             errorHandler.handleError(res, error);
         }
     }
