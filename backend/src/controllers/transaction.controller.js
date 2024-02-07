@@ -1,5 +1,4 @@
 import errorHandler from "../errorHandlers/errorHandler.js";
-import { NO_TRANSACTIONS_FOUND_ERROR } from "../errorHandlers/transaction.error.js";
 import TransactionModel from "../models/transaction.model.js";
 import TransactionValidator from "../validators/transaction.validator.js";
 
@@ -16,7 +15,7 @@ export default class TransactionController {
 
     static async getSpendingsPerCategory(req, res) {
         try {
-            const allTransactions = await TransactionModel.getSpendigsPerCategory();
+            const allTransactions = await TransactionModel.getSpendingsPerCategory();
             res.json(allTransactions);
         }
         catch(error) {

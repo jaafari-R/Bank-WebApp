@@ -10,7 +10,7 @@ export default class TransactionModel {
         return allTransactions;
     }
 
-    static async getSpendigsPerCategory() {
+    static async getSpendingsPerCategory() {
         const spendingsPerCategory = await Transaction.aggregate([
             {$group: {
                 _id: "$category",
