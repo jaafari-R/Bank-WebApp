@@ -20,8 +20,13 @@ export default function CreateTransaction() {
         setVendor("");
     }
 
-    const createTransaction = async () => {
-        await transactionApiManager.createTransaction({amount, category, vendor});
+    const createTransaction = async (isWithdraw) => {
+        const transaction = {
+            amount: isWithdraw ? -amount : amount, 
+            category, 
+            vendor
+        }
+        await transactionApiManager.createTransaction(transaction);
         resetStates();
     };
 
@@ -33,8 +38,8 @@ export default function CreateTransaction() {
             <FormInput dataType="text" handleChange={handleChange(setCategory)} fieldName="category" value={category}/>
             <FormInput dataType="text" handleChange={handleChange(setVendor)} fieldName="vendor" value={vendor}/>
             <div className="btns">
-                <button className="withdrawBtn" onClick={createTransaction}>Deposit</button>
-                <button className="depositBtn" onClick={createTransaction}>Withdraw</button>
+                <button className="depositBtn" onClick={() => createTransaction(false)}>Deposit</button>
+                <button className="withdrawBtn" onClick={() => createTransaction(true)}>Withdraw</button>
             </div>
         </div>
     )
