@@ -1,0 +1,15 @@
+.transaction {
+    padding: 20px;
+}
+
+.transaction:nth-child(odd) {
+    background-color: #f4f4f4;
+}
+
+.transaction:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.transaction > .delete {
+    color: red;
+}

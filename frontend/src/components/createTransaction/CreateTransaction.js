@@ -14,7 +14,7 @@ export default function CreateTransaction() {
     const createTransaction = async () => {
         await transactionApiManager.createTransaction(transaction);
     };
-  
+
     return (
         <div className='createTransaction'>
             <div>

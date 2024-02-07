@@ -1,3 +1,5 @@
+import "./Transactions.css"
+
 import React, { useEffect, useState } from 'react'
 import transactionApiManager from '../../apiManagers/transactions.apiManager';
 import Transaction from './Transaction';
@@ -15,11 +17,6 @@ export default function Transactions() {
         fetchTransactions();
     }, [])
 
-    const createTransaction = async() => {
-        const newTransaction = await transactionApiManager.createTransaction(transaction);
-        setTransactions([...transactions, newTransaction]);
-    }
-
     const deleteTransaction = async (transactionId) => {
         await transactionApiManager.deleteTransaction(transactionId);
         const newTransactions = [...transactions];
@@ -30,8 +27,9 @@ export default function Transactions() {
 
     return (
         <div className='transactions'>
+            <h1>Transactions</h1>
             {transactions.map(transaction =>
-                <Transaction key={transaction.id} transaction={transaction}/>
+                <Transaction key={transaction.id} transaction={transaction} deleteTransaction={() => deleteTransaction(transaction.id)}/>
             )}
         </div>
     )

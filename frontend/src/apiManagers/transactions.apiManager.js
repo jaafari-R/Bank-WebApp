@@ -36,7 +36,7 @@ class TransactionApiManager {
 
     async deleteTransaction(id) {
         try {
-            const response = await this.axios.delete("/", {id});
+            const response = await this.axios.delete("/", {data: {id}});
             return response.data;
         }
         catch(error) {
