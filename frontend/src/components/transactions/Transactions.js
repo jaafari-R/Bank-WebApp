@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import transactionApiManager from '../../apiManagers/transactions.apiManager';
 import Transaction from './Transaction';
 import toast from "react-hot-toast";
-import { notify } from "../../utils/toast";
+import { validateAndNotify } from "../../utils/toast";
 
 export default function Transactions() {
     const [transactions, setTransactions] = useState([]);
@@ -15,7 +15,7 @@ export default function Transactions() {
     useEffect(() => {
         const fetchTransactions = async () => {
             const allTransactions = await transactionApiManager.getAllTransactions();
-            if(notify(allTransactions)) {
+            if(validateAndNotify(allTransactions)) {
                 setTransactions(allTransactions);
             }
         }
@@ -26,7 +26,7 @@ export default function Transactions() {
     const deleteTransaction = async (transactionId) => {
         const res = await transactionApiManager.deleteTransaction(transactionId);
         console.log(res);
-        if(!notify(res, "Transaction Deleted Successfully!")) {
+        if(!validateAndNotify(res, "Transaction Deleted Successfully!")) {
             return;
         }
         const newTransactions = [...transactions];

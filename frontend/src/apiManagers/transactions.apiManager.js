@@ -19,7 +19,7 @@ class TransactionApiManager {
             return allTransactions;
         }
         catch(error) {
-            return error.response.data;
+            return this.getErrorMsg(error);
         }
     }
 
@@ -30,7 +30,7 @@ class TransactionApiManager {
             return newTransaction;
         }
         catch(error) {
-            return error.response.data;
+            return this.getErrorMsg(error);
         }
     }
 
@@ -39,7 +39,7 @@ class TransactionApiManager {
             await this.axios.delete("/", {data: {id}});
         }
         catch(error) {
-            return error.response.data;
+            return this.getErrorMsg(error);
         }
     }
 
@@ -50,8 +50,15 @@ class TransactionApiManager {
             return spendingsPerCategory;
         }
         catch(error) {
+            return this.getErrorMsg(error);
+        }
+    }
+
+    getErrorMsg(error) {
+        if(error.response) {
             return error.response.data;
         }
+        return "Failed to connect server!";
     }
 }
 
