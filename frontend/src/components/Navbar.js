@@ -3,7 +3,9 @@ import "./Navbar.css"
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Navbar() {
+const DANGER_BALANCE = 500;
+
+export default function Navbar({ balance }) {
   return (
     <div className='navbar'>
         <ul className="links">
@@ -23,6 +25,12 @@ export default function Navbar() {
                 </Link>
             </li>
         </ul>
+        <h2 className="balance">
+            Balance: 
+            <span 
+                className={balance < DANGER_BALANCE && "danger"}>
+            ${balance}</span>
+        </h2>
     </div>
   )
 }

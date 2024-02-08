@@ -1,9 +1,25 @@
 .navbar {
+    position: relative;
     padding-block: 20px;
     display: flex;
     justify-content: center;
     border-bottom: #aaa solid 1px;
     box-shadow: 0 1px 10px #aaa;
+}
+
+.navbar > .balance {
+    position: absolute;
+    right: 100px;
+    bottom: 20%;
+}
+
+.navbar > .balance > span {
+    margin-left: 5px;
+    color: green;
+}
+
+.navbar > .balance > span.danger {
+    color: red;
 }
 
 .navbar > .links {
