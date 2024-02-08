@@ -1,5 +1,7 @@
 import './App.css';
 
+import toast, { Toaster } from "react-hot-toast";
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Transactions from './components/transactions/Transactions';
@@ -17,6 +19,10 @@ function App() {
                     <Route path="/createTransaction" element={<Operations />}/>
                     <Route path="/breakdown" element={<CategorySpendings />}/>
                 </Routes>
+                <Toaster
+                    position="bottom-center"
+                    reverseOrder={false}
+                />
             </div>
         </BrowserRouter>
     );

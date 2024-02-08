@@ -2,9 +2,12 @@ import "./CreateTransaction.css"
 
 import React, { useState } from 'react'
 
+import toast from "react-hot-toast";
+
 import transactionApiManager from '../../apiManagers/transactions.apiManager';
 import Transaction from "../../apiManagers/transactions";
 import FormInput from './FormInput';
+import { notify } from "../../utils/toast";
 
 export default function CreateTransaction() {
     const [amount, setAmount] = useState("");
@@ -26,8 +29,10 @@ export default function CreateTransaction() {
             category, 
             vendor
         }
-        await transactionApiManager.createTransaction(transaction);
-        resetStates();
+        const res = await transactionApiManager.createTransaction(transaction);
+        if(notify(res, "Transaction Performed Successfully!")) {
+            resetStates();
+        }
     };
 
     return (

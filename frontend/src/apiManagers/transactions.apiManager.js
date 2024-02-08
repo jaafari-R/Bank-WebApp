@@ -19,7 +19,7 @@ class TransactionApiManager {
             return allTransactions;
         }
         catch(error) {
-            console.log(error);
+            return error.response.data;
         }
     }
 
@@ -30,17 +30,16 @@ class TransactionApiManager {
             return newTransaction;
         }
         catch(error) {
-            console.log(error);
+            return error.response.data;
         }
     }
 
     async deleteTransaction(id) {
         try {
-            const response = await this.axios.delete("/", {data: {id}});
-            return response.data;
+            await this.axios.delete("/", {data: {id}});
         }
         catch(error) {
-            console.log(error);
+            return error.response.data;
         }
     }
 
@@ -51,7 +50,7 @@ class TransactionApiManager {
             return spendingsPerCategory;
         }
         catch(error) {
-            console.log(error);
+            return error.response.data;
         }
     }
 }

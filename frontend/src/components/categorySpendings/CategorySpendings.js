@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 import CategorySpending from './CategorySpending';
 import transactionApiManager from '../../apiManagers/transactions.apiManager';
+import { notify } from "../../utils/toast";
 
 export default function CategorySpendings() {
     const [categorySpendings, setCategorySpendings] = useState([]);
@@ -12,7 +13,9 @@ export default function CategorySpendings() {
     useEffect(() => {
         const fetchCategorySpendings = async () => {
             const fetchedCategorySpendings = await transactionApiManager.getSpendingsPerCategory();
-            setCategorySpendings(fetchedCategorySpendings);
+            if(notify(fetchedCategorySpendings)) {
+                setCategorySpendings(fetchedCategorySpendings);
+            }
         }
 
         fetchCategorySpendings();

@@ -5,6 +5,8 @@ import "./Transaction.css";
 import React, { useEffect, useState } from 'react'
 import transactionApiManager from '../../apiManagers/transactions.apiManager';
 import Transaction from './Transaction';
+import toast from "react-hot-toast";
+import { notify } from "../../utils/toast";
 
 export default function Transactions() {
     const [transactions, setTransactions] = useState([]);
@@ -13,14 +15,20 @@ export default function Transactions() {
     useEffect(() => {
         const fetchTransactions = async () => {
             const allTransactions = await transactionApiManager.getAllTransactions();
-            setTransactions(allTransactions);
+            if(notify(allTransactions)) {
+                setTransactions(allTransactions);
+            }
         }
 
         fetchTransactions();
     }, [])
 
     const deleteTransaction = async (transactionId) => {
-        await transactionApiManager.deleteTransaction(transactionId);
+        const res = await transactionApiManager.deleteTransaction(transactionId);
+        console.log(res);
+        if(!notify(res, "Transaction Deleted Successfully!")) {
+            return;
+        }
         const newTransactions = [...transactions];
         const transactionIndex = newTransactions.findIndex(transaction => transaction.id === transactionId);
         newTransactions.splice(transactionIndex, 1);

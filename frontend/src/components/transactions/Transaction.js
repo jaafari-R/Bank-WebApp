@@ -14,7 +14,7 @@ export default function Transaction({ transaction, deleteTransaction }) {
             <div className="icons">                
                 <div className="delete">
                     <span className="tooltip">Delete</span>
-                    <DeleteForeverIcon className="deleteIcon" onClick={deleteTransaction} fontSize="large"/>
+                    <DeleteForeverIcon className="deleteIcon" onClick={deleteTransaction} fontSize="large" />
                 </div>
             </div>
             <div className="fields">
