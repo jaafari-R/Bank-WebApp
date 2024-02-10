@@ -1,5 +1,7 @@
 import errorHandler from "../errorHandlers/errorHandler.js";
+import BalanceModel from "../models/balance.model.js";
 import TransactionModel from "../models/transaction.model.js";
+import BalanceValidator from "../validators/balance.validator.js";
 import TransactionValidator from "../validators/transaction.validator.js";
 
 export default class TransactionController {
@@ -23,11 +25,19 @@ export default class TransactionController {
         }
     }
 
+    /* don't allow performing a transaction that wouldtake the balance bellow Config.BALANCE_MINIMUM_VAL */
     static async createTransaction(req, res) {
         try {
             TransactionValidator.validateCreate(req.body);
-            req.body.category = req.body.category.toLowerCase();
+            
+            const amount = req.body.amount;
+            const balance = await BalanceModel.getBalance();
+            BalanceValidator.validateUpdate(balance.balance, amount);
 
+            req.body.category = req.body.category[0].toUpperCase() + 
+                req.body.category.slice(1).toLowerCase();
+
+            await BalanceModel.updateBalance({ amount });
             const newTransaction = await TransactionModel.createTransaction(req.body);
             res.status(201).send(newTransaction);
         }

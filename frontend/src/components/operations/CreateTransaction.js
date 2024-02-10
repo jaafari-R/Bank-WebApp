@@ -5,11 +5,11 @@ import React, { useState } from 'react'
 import toast from "react-hot-toast";
 
 import transactionApiManager from '../../apiManagers/transactions.apiManager';
-import Transaction from "../../apiManagers/transactions";
 import FormInput from './FormInput';
 import { validateAndNotify } from "../../utils/toast";
+import balanceApiManager from "../../apiManagers/balance.apiManager";
 
-export default function CreateTransaction() {
+export default function CreateTransaction({ updateBalance }) {
     const [amount, setAmount] = useState("");
     const [category, setCategory] = useState("");
     const [vendor, setVendor] = useState("");
@@ -21,7 +21,7 @@ export default function CreateTransaction() {
         setAmount("");
         setCategory("");
         setVendor("");
-    }
+    };
 
     const createTransaction = async (isWithdraw) => {
         const transaction = {
@@ -30,6 +30,8 @@ export default function CreateTransaction() {
             vendor
         }
         const res = await transactionApiManager.createTransaction(transaction);
+        const updatedBalance = await balanceApiManager.getBalance();
+        updateBalance(updatedBalance.balance);
         if(validateAndNotify(res, "Transaction Performed Successfully!")) {
             resetStates();
         }

@@ -20,6 +20,17 @@ class BalanceApiManager {
             return getErrorMsg(error);
         }
     }
+
+    async updateBalance(amount) {
+        try {
+            const response = await this.axios.post("/", {amount});
+            const updatedBalance = new Balance(response.data);
+            return updatedBalance;
+        }
+        catch(error) {
+            return getErrorMsg();
+        }
+    }
 }
 
 const balanceApiManager = new BalanceApiManager();

@@ -1,5 +1,6 @@
 import Transaction from "../db/schemas/transaction.js";
 import { NO_TRANSACTIONS_FOUND_ERROR, TRANSACTION_DOES_NOT_EXIST_ERROR } from "../errorHandlers/transaction.error.js";
+import BalanceModel from "./balance.model.js";
 
 export default class TransactionModel {
     static async getAllTransactions() {

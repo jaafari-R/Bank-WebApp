@@ -1,9 +1,11 @@
 import transactionErrors from "./transaction.error.js";
+import balanceErrors from "./balance.error.js";
 
 class ErrorHandler {
     constructor() {
         this.errors = {
             ...transactionErrors,
+            ...balanceErrors
         };
     }
 

@@ -25,7 +25,6 @@ export default function Transactions() {
 
     const deleteTransaction = async (transactionId) => {
         const res = await transactionApiManager.deleteTransaction(transactionId);
-        console.log(res);
         if(!validateAndNotify(res, "Transaction Deleted Successfully!")) {
             return;
         }

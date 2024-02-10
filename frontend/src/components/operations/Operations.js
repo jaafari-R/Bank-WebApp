@@ -4,10 +4,10 @@ import React from 'react'
 
 import CreateTransaction from './CreateTransaction'
 
-export default function Operations() {
+export default function Operations({ updateBalance }) {
     return (
         <div className='operations'>
-            <CreateTransaction />
+            <CreateTransaction updateBalance={updateBalance} />
         </div>
     )
 }

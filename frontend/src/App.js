@@ -23,7 +23,11 @@ function App() {
             }
         }
         fetchBalance();
-    }, [])
+    }, []);
+
+    const updateBalance = async (newBalance) => {
+        setBalance(newBalance);
+    }
 
     return (
         <BrowserRouter>
@@ -31,7 +35,7 @@ function App() {
                 <Navbar balance={balance} />
                 <Routes>
                     <Route path="/" element={<Transactions />}/>
-                    <Route path="/createTransaction" element={<Operations />}/>
+                    <Route path="/createTransaction" element={<Operations updateBalance={updateBalance} />}/>
                     <Route path="/breakdown" element={<CategorySpendings />}/>
                 </Routes>
                 <Toaster

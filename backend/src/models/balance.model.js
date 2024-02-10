@@ -10,9 +10,7 @@ export default class BalanceModel {
         return balance;
     }
 
-    static async updateBalance(amount) {
-        const balance = await Balance.findOne({});
-        const updatedBalance = await Balance.findOneAndUpdate({}, {$set: {balance: balance.balance + amount}}, {new: true});
-        return updatedBalance;
+    static updateBalance({ amount }) {
+        return Balance.findOneAndUpdate({}, {$inc: {balance: amount}}, {new: true});
     }
 }
