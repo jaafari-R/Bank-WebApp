@@ -10,22 +10,23 @@ export default class TransactionValidator {
             throw new INVALID_AMOUNT_ERROR();
         }
 
-        if(!date) {
-            return;
+        if(date) {
+            validateDate(date);
         }
-        
-        const dateObj = new Date(date);
+    }
+    
+    static validateDelete({id}) {
+        if(!id) {
+            throw new INVALID_TRANSACTION_ID_ERROR();
+        }
+    }
+    
+    static validateDate(date) {
         if(isNaN(dateObj)) {
             throw new INVALIDE_DATE_FORMAT_ERROR();
         }
         if(dateObj > new Date()) {
             throw new INVALID_DATE_ERROR();
-        }
-    }
-
-    static validateDelete({id}) {
-        if(!id) {
-            throw new INVALID_TRANSACTION_ID_ERROR();
         }
     }
 }

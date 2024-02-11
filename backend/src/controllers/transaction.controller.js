@@ -6,9 +6,19 @@ import TransactionValidator from "../validators/transaction.validator.js";
 
 export default class TransactionController {
     static async getAllTransactions(req, res) {
+        const startDate = req.query.startDate;
+        const endDate = req.query.endDate;
+
         try {
-            const allTransactions = await TransactionModel.getAllTransactions();
-            res.json(allTransactions);
+            if(startDate) {
+                TransactionValidator.validateDate(startDate);
+            }
+            if(endDate) {
+                TransactionValidator.validateDate(endDate);
+            }
+
+            const transactions = await TransactionModel.getAllTransactions(startDate, endDate);
+            res.json(transactions);
         }
         catch(error) {
             errorHandler.handleError(res, error);

@@ -3,12 +3,41 @@ import { NO_TRANSACTIONS_FOUND_ERROR, TRANSACTION_DOES_NOT_EXIST_ERROR } from ".
 import BalanceModel from "./balance.model.js";
 
 export default class TransactionModel {
-    static async getAllTransactions() {
-        const allTransactions = await Transaction.find({});
-        if(allTransactions.length === 0) {
+    static async getAllTransactions(startDate, endDate) {
+        const endDateAnd24Hours = endDate ? 
+            new Date(new Date(endDate).getTime() + 60 * 60 * 24 * 1000) : endDate;
+
+        let transactions;
+        if(startDate && endDate) {
+            transactions = await Transaction.find({
+                date: {
+                    $gte: new Date(startDate),
+                    $lt: endDateAnd24Hours
+                }
+            });
+        }
+        else if(startDate) {
+            transactions = await Transaction.find({
+                date: {
+                    $gte: new Date(startDate)
+                }
+            });
+        }
+        else if(endDate) {
+            transactions = await Transaction.find({
+                date: {
+                    $lt: endDateAnd24Hours
+                }
+            });
+        }
+        else {
+            transactions = await Transaction.find({});
+        }
+
+        if(transactions.length === 0) {
             throw new NO_TRANSACTIONS_FOUND_ERROR();
         }
-        return allTransactions;
+        return transactions;
     }
 
     static async getSpendingsPerCategory() {
