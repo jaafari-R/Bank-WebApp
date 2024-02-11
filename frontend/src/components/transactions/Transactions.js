@@ -36,12 +36,7 @@ export default function Transactions() {
     }
 
     const handleDate = setDate => date => {
-        if(date > new Date()) {
-            setDate(new Date())
-        }
-        else {
-            setDate(date);
-        }
+        setDate(date);
     }
 
     return (
