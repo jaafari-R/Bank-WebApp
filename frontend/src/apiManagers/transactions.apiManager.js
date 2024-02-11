@@ -13,9 +13,10 @@ class TransactionApiManager {
         });
     }
 
-    async getAllTransactions() {
+    async getAllTransactions(startDate, endDate) {
         try {
-            const response = await this.axios.get(ROUTES.GET_ALL_TRANSACTIONS);
+            const queries = `?${startDate ? "startDate=" + startDate + "&" : ""}${endDate ? "endDate=" + endDate : ""}`;
+            const response = await this.axios.get(ROUTES.GET_ALL_TRANSACTIONS + queries);
             const allTransactions = response.data.map(transaction => new Transaction(transaction));
             return allTransactions;
         }

@@ -10,6 +10,11 @@ export default class TransactionValidator {
             throw new INVALID_AMOUNT_ERROR();
         }
 
+        const dateObj = new Date(date);
+        if(dateObj > new Date()) {
+            throw new INVALID_DATE_ERROR();
+        }
+
         if(date) {
             validateDate(date);
         }
@@ -22,11 +27,10 @@ export default class TransactionValidator {
     }
     
     static validateDate(date) {
+        const dateObj = new Date(date);
         if(isNaN(dateObj)) {
             throw new INVALIDE_DATE_FORMAT_ERROR();
         }
-        if(dateObj > new Date()) {
-            throw new INVALID_DATE_ERROR();
-        }
+
     }
 }

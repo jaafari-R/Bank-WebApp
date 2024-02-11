@@ -1,30 +1,28 @@
 import "../Table.css"
 import "./Transaction.css";
+import "./Transactions.css";
 
 
 import React, { useEffect, useState } from 'react'
 import transactionApiManager from '../../apiManagers/transactions.apiManager';
 import Transaction from './Transaction';
-import toast from "react-hot-toast";
 import { validateAndNotify } from "../../utils/toast";
+import DatePicker from "react-datepicker";
 
-export default function Transactions({importedTransactions}) {
+export default function Transactions() {
     const [transactions, setTransactions] = useState([]);
+    const [startDateFilter, setStartDateFilter] = useState(null);
+    const [endDateFilter, setEndDateFilter] = useState(null);
 
     useEffect(() => {
         const fetchTransactions = async () => {
-            const allTransactions = await transactionApiManager.getAllTransactions();
+            const allTransactions = await transactionApiManager.getAllTransactions(startDateFilter, endDateFilter);
             if(validateAndNotify(allTransactions)) {
                 setTransactions(allTransactions);
             }
         }
-        if(importedTransactions) {
-            setTransactions(importedTransactions);
-        }
-        else {
-            fetchTransactions();
-        }
-    }, [])
+        fetchTransactions();
+    }, [startDateFilter, endDateFilter])
 
     const deleteTransaction = async (transactionId) => {
         const res = await transactionApiManager.deleteTransaction(transactionId);
@@ -37,8 +35,27 @@ export default function Transactions({importedTransactions}) {
         setTransactions(newTransactions);
     }
 
+    const handleDate = setDate => date => {
+        if(date > new Date()) {
+            setDate(new Date())
+        }
+        else {
+            setDate(date);
+        }
+    }
+
     return (
         <div className='table'>
+            <div className="dateFilters">
+                <div>
+                    <label>Start Date: </label>
+                    <DatePicker selected={startDateFilter} onChange={handleDate(setStartDateFilter)} />
+                </div>
+                <div>
+                    <label>End Date: </label>
+                    <DatePicker selected={endDateFilter} onChange={handleDate(setEndDateFilter)} />
+                </div>
+            </div>
             <h1>Transactions</h1>
             <div className='transaction tableItem table-header'>
                 <div className="fields">
