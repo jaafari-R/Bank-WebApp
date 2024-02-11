@@ -6,7 +6,7 @@ main();
 
 async function main() {
     let dbConnected = false;
-    // while(!dbConnected) {
+    while(!dbConnected) {
         try {
             await DBManager.connectDB(Config.DB_URL);
             dbConnected = true;
@@ -15,7 +15,7 @@ async function main() {
         catch(error) {
             console.log("Failed to connect to DB:", error);
         }
-    // }
+    }
 
     app.listen(Config.PORT, () => 
         console.log("Server is listening on port", Config.PORT)
