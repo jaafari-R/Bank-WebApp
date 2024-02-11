@@ -7,7 +7,6 @@
 }
 
 .transactionsModal.table {
-    /* background-color: #bbb5; */
     margin-inline: 10%;
 }
 
@@ -31,14 +30,4 @@
 
 .transactionsModal > .tableItem .fields {
     height: 100%;
-    /* color: white; */
 }
-
-/* .transactionsModal > .tableItem.deposit {
-    background-color: rgb(6, 175, 6)
-
-}
-
-.transactionsModal > .tableItem.withdraw {
-    background-color: rgba(255, 73, 73, 1);
-} */

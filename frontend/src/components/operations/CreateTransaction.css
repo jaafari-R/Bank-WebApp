@@ -19,3 +19,22 @@
 .createTransaction > .btns > .depositBtn {
     background-color: #04AA6DDD;
 }
+
+.date {
+    margin-bottom: 20px;
+    display: flex;
+    width: fit-content;
+    margin-inline: auto;
+    align-items: center;
+}
+
+.date > label {
+    margin-right: 10px;
+}
+
+.date input {
+    padding: 5%;
+    font-size: 15px;
+    font-weight: 500;
+    width: 100%;
+}

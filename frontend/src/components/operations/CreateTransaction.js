@@ -2,7 +2,8 @@ import "./CreateTransaction.css"
 
 import React, { useState } from 'react'
 
-import toast from "react-hot-toast";
+import "react-datepicker/dist/react-datepicker.css"
+import DatePicker from "react-datepicker";
 
 import transactionApiManager from '../../apiManagers/transactions.apiManager';
 import FormInput from './FormInput';
@@ -13,9 +14,13 @@ export default function CreateTransaction({ updateBalance }) {
     const [amount, setAmount] = useState("");
     const [category, setCategory] = useState("");
     const [vendor, setVendor] = useState("");
+    const [date, setDate] = useState(new Date())
 
     const handleChange = setState => e =>
         setState(e.target.value);
+
+    const handleDate = newDate => 
+        setDate(newDate);
 
     const resetStates = () => {
         setAmount("");
@@ -27,7 +32,8 @@ export default function CreateTransaction({ updateBalance }) {
         const transaction = {
             amount: isWithdraw ? -amount : amount, 
             category, 
-            vendor
+            vendor,
+            date
         }
         const res = await transactionApiManager.createTransaction(transaction);
         const updatedBalance = await balanceApiManager.getBalance();
@@ -44,6 +50,10 @@ export default function CreateTransaction({ updateBalance }) {
             <FormInput dataType="number" handleChange={handleChange(setAmount)} fieldName="amount" value={amount}/>
             <FormInput dataType="text" handleChange={handleChange(setCategory)} fieldName="category" value={category}/>
             <FormInput dataType="text" handleChange={handleChange(setVendor)} fieldName="vendor" value={vendor}/>
+            <div className="date">
+                <label>Date: </label>
+                <DatePicker selected={date} onChange={handleDate} />
+            </div>
             <div className="btns">
                 <button className="depositBtn" onClick={() => createTransaction(false)}>Deposit</button>
                 <button className="withdrawBtn" onClick={() => createTransaction(true)}>Withdraw</button>

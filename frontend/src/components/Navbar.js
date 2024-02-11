@@ -28,7 +28,7 @@ export default function Navbar({ balance }) {
         <h2 className="balance">
             Balance: 
             <span 
-                className={balance < DANGER_BALANCE && "danger"}>
+                className={(balance < DANGER_BALANCE && "danger") || ""}>
             ${balance}</span>
         </h2>
     </div>

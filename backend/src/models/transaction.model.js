@@ -23,9 +23,9 @@ export default class TransactionModel {
         return spendingsPerCategory;
     }
 
-    static createTransaction({amount, category, vendor}) {
+    static createTransaction({amount, category, vendor, date}) {
         return Transaction.create({
-            amount, category, vendor
+            amount, category, vendor, date
         });
     }
 

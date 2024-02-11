@@ -23,10 +23,22 @@ export class TRANSACTION_DOES_NOT_EXIST_ERROR extends Error {
     static statusCode = 404;
 }
 
+export class INVALID_DATE_ERROR extends Error {
+    static msg = "Invalid date!";
+    static statusCode = 400;
+}
+
+export class INVALIDE_DATE_FORMAT_ERROR extends Error {
+    static msg = "Invalid Date Format";
+    static statusCode = 400;
+}
+
 export default {
     NO_TRANSACTIONS_FOUND_ERROR,
     MISSING_DATA_ERROR,
     INVALID_AMOUNT_ERROR,
     INVALID_TRANSACTION_ID_ERROR,
-    TRANSACTION_DOES_NOT_EXIST_ERROR
+    TRANSACTION_DOES_NOT_EXIST_ERROR,
+    INVALID_DATE_ERROR,
+    INVALIDE_DATE_FORMAT_ERROR
 }

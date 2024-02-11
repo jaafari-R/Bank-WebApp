@@ -10,7 +10,6 @@ import { validateAndNotify } from "../../utils/toast";
 export default function CategorySpendings() {
     const [categorySpendings, setCategorySpendings] = useState([]);
     const [transactions, setTransactions] = useState([]);
-    const [hoveredCategoryTransactions, setHoveredCategoryTransactions] = useState(null);
 
     useEffect(() => {
         const fetchCategorySpendings = async () => {
