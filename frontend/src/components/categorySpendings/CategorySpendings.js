@@ -9,6 +9,8 @@ import { validateAndNotify } from "../../utils/toast";
 
 export default function CategorySpendings() {
     const [categorySpendings, setCategorySpendings] = useState([]);
+    const [transactions, setTransactions] = useState([]);
+    const [hoveredCategoryTransactions, setHoveredCategoryTransactions] = useState(null);
 
     useEffect(() => {
         const fetchCategorySpendings = async () => {
@@ -17,9 +19,20 @@ export default function CategorySpendings() {
                 setCategorySpendings(fetchedCategorySpendings);
             }
         }
+        const fetchTransactions = async () => {
+            const allTransactions = await transactionApiManager.getAllTransactions();
+            if(validateAndNotify(allTransactions)) {
+                setTransactions(allTransactions);
+            }
+        }
 
         fetchCategorySpendings();
+        fetchTransactions();
     }, [])
+
+    const getCategoryTransactions = (category) => {
+        return transactions.filter(transaction => transaction.category === category);
+    }
 
     return (
         <div className='categorySpendings table'>
@@ -31,7 +44,11 @@ export default function CategorySpendings() {
                 </div>
             </div>
             {categorySpendings.map((categorySpending, index) => 
-                <CategorySpending key={index} categorySpending={categorySpending} />    
+                <CategorySpending 
+                    key={index} 
+                    categorySpending={categorySpending} 
+                    transactions={getCategoryTransactions(categorySpending.category)} 
+                />    
             )}
         </div>
     )

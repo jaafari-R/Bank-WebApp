@@ -1,3 +1,7 @@
+.categorySpending {
+    position: relative;
+}
+
 .categorySpending.tableItem > .fields > .category {
     flex: 0.5;
 }

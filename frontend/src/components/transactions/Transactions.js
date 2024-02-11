@@ -8,9 +8,8 @@ import Transaction from './Transaction';
 import toast from "react-hot-toast";
 import { validateAndNotify } from "../../utils/toast";
 
-export default function Transactions() {
+export default function Transactions({importedTransactions}) {
     const [transactions, setTransactions] = useState([]);
-    const [transaction, setTransaction] = useState({amount: "", category: "", vendor: ""});
 
     useEffect(() => {
         const fetchTransactions = async () => {
@@ -19,8 +18,12 @@ export default function Transactions() {
                 setTransactions(allTransactions);
             }
         }
-
-        fetchTransactions();
+        if(importedTransactions) {
+            setTransactions(importedTransactions);
+        }
+        else {
+            fetchTransactions();
+        }
     }, [])
 
     const deleteTransaction = async (transactionId) => {
