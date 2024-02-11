@@ -1,5 +1,6 @@
 import axios from "axios";
-import Config from "../config";
+import { EXTERNAL_API_Config as Config } from "../config";
+import { TransactionApiRoutes as ROUTES } from "../config";
 import CategorySpending from "./categorySpending";
 import Transaction from "./transactions";
 import { getErrorMsg } from "../utils/apiManager.utils";
@@ -14,7 +15,7 @@ class TransactionApiManager {
 
     async getAllTransactions() {
         try {
-            const response = await this.axios.get("/");
+            const response = await this.axios.get(ROUTES.GET_ALL_TRANSACTIONS);
             const allTransactions = response.data.map(transaction => new Transaction(transaction));
             return allTransactions;
         }
@@ -25,7 +26,7 @@ class TransactionApiManager {
 
     async createTransaction(transaction) {
         try {
-            const response = await this.axios.post("/", transaction);
+            const response = await this.axios.post(ROUTES.POST_CREATE_TRANSACTION, transaction);
             const newTransaction = new Transaction(response.data);
             return newTransaction;
         }
@@ -36,7 +37,7 @@ class TransactionApiManager {
 
     async deleteTransaction(id) {
         try {
-            await this.axios.delete("/", {data: {id}});
+            await this.axios.delete(ROUTES.DELETE_TRANSACTION, {data: {id}});
         }
         catch(error) {
             return getErrorMsg(error);
@@ -45,7 +46,7 @@ class TransactionApiManager {
 
     async getSpendingsPerCategory() {
         try {
-            const response = await this.axios.get("/spendingsPerCategory");
+            const response = await this.axios.get(ROUTES.GET_SPENDING_PER_CATEGORY);
             const spendingsPerCategory = response.data.map(spc => new CategorySpending(spc));
             return spendingsPerCategory;
         }
