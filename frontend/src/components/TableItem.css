@@ -7,11 +7,11 @@
 }
 
 .tableItem:nth-child(odd) {
-    background-color: #c0c0c066;
+    background-color: #c0c0c099;
 }
 
 .tableItem:nth-child(even) {
-    background-color: #f0f0f0bb;
+    background-color: #f0f0f099;
 }
 
 .tableItem > .fields {

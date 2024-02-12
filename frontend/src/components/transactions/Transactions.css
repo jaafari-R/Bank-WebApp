@@ -4,3 +4,7 @@
     justify-content: space-around;
     margin-bottom: 20px;
 }
+
+.dateFilters input {
+    font-size: x-large;
+}
