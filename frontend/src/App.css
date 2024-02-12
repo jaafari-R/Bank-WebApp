@@ -6,9 +6,18 @@
 .app {
     min-height: 100vh;
     min-width: 100vw;
+    padding-bottom: 20px;
+    /* background-image: url("bg.jpeg"); */
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 a {
     text-decoration: none;
     color: black;
+}
+
+input {
+    background-color: #fff4;
 }

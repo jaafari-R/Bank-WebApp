@@ -1,9 +1,9 @@
 .table {
     margin-top: 20px;
-    margin-inline: 30vw;  
+    margin-inline: 20vw;  
     padding: 20px;
-    margin-bottom: 20px;
-    background-color: #f9f9f9;  
+    /* margin-bottom: 20px; */
+    background-color: #f9f9f966;  
     border-radius: 10px;
     text-align: center;
 }

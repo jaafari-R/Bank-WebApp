@@ -16,7 +16,7 @@ export default class TransactionValidator {
         }
 
         if(date) {
-            validateDate(date);
+            TransactionValidator.validateDate(date);
         }
     }
     

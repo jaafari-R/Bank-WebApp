@@ -14,6 +14,8 @@
 
 .formInput > input {
     /* display: block; */
+    padding: 10px;
+    padding-inline: 10px;
     border: none;
     border-bottom: 2px solid rgba(0,0,0, 0.3);
     font-size: 20px;
@@ -23,16 +25,16 @@
 
 .formInput > input:focus ~ label,
 .formInput > input:valid ~ label {
-  transform: translateY(-20px);
+  transform: translateY(-35px);
   font-size: 17px;
-  color: #3498db;
+  color: #127245;
 }
 
 .formInput > label {
     position: absolute;
     pointer-events: none;
     bottom: 10px;
-    left: 0;
+    left: 10px;
     font-size: 20px;
     transition: all 0.3s ease;
   }

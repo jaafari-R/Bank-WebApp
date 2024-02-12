@@ -10,6 +10,7 @@
     font-size: 15px;
     font-weight: 600;
     color: #eee;
+    border: 1px solid #fff8;
 }
 
 .createTransaction > .btns > .withdrawBtn {
@@ -37,4 +38,5 @@
     font-size: 15px;
     font-weight: 500;
     width: 100%;
+    border: none;
 }
