@@ -1,12 +1,21 @@
 .modal {
     position: absolute;
-    top: 70%;
     left: 0;
     z-index: 10;
     width: 100%;
 }
 
+.modal.above {
+    bottom: calc(80%);
+}
+
+.modal.bellow {
+    top: 70%;
+}
+
 .transactionsModal.table {
+    max-height: 300px;
+    overflow-y: auto;
     background-color: white;
     margin-inline: 10%;
 }

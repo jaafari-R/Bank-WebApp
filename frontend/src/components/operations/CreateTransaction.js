@@ -19,6 +19,12 @@ export default function CreateTransaction({ updateBalance }) {
     const handleChange = setState => e =>
         setState(e.target.value);
 
+    const handleNumberChange = setState => e => {
+        if(e.target.value === "" || (!isNaN(e.target.value) && !isNaN(parseFloat(e.target.value)))) {
+            setState(e.target.value);
+        }
+    }
+
     const handleDate = newDate => 
         setDate(newDate);
 
@@ -30,8 +36,8 @@ export default function CreateTransaction({ updateBalance }) {
 
     const createTransaction = async (isWithdraw) => {
         const transaction = {
-            amount: isWithdraw ? -amount : amount, 
-            category, 
+            amount: isWithdraw ? -amount : amount,
+            category,
             vendor,
             date
         }
@@ -47,7 +53,7 @@ export default function CreateTransaction({ updateBalance }) {
         <div className='operation createTransaction'>
             <h2 className='title'>Perform a Transaction</h2>
 
-            <FormInput dataType="number" handleChange={handleChange(setAmount)} fieldName="amount" value={amount}/>
+            <FormInput dataType="number" handleChange={handleNumberChange(setAmount)} fieldName="amount" value={amount}/>
             <FormInput dataType="text" handleChange={handleChange(setCategory)} fieldName="category" value={category}/>
             <FormInput dataType="text" handleChange={handleChange(setVendor)} fieldName="vendor" value={vendor}/>
             <div className="date">
